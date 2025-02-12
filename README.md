@@ -15,8 +15,8 @@ Once these two are install. To build the document you need to run the following 
 1. Start a virtual environment and install the python packages:
 
     ```python
-    pipenv shell
     pipenv install
+    pipenv shell
     ```
 
 2. then build the document: open a terminal at the root folder of the document

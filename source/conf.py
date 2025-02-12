@@ -53,7 +53,8 @@ extensions = [
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
     'sphinxcontrib.plantuml',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinxcontrib.exceltable'
 ]
 
 source_suffix = {
@@ -116,7 +117,7 @@ html_theme = 'cloud'
 # Modify the cloud.css theme to match your prefer styling by
 # modifying individual css element.
 html_style = ['CloudThemeOverride.css', 'rcky-customStyle.css']
-html_show_sourcelink = False
+html_show_sourcelink = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

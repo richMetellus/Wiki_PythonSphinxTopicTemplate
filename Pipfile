@@ -20,5 +20,6 @@ cloud-sptheme = "*"
 sphinxcontrib-plantuml = "*"
 sphinx-design = "*"
 sphinx-book-theme = "*"
+sphinxcontrib-exceltable = "*"
 
 [dev-packages]
