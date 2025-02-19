@@ -26,4 +26,8 @@ Once these two are install. To build the document you need to run the following 
     make livehtml
     ```
 
-For more information, see the file `source/index.rst`.
+For more information, see the file
+
+```{eval-rst}
+- :doc:`index.rst`
+```

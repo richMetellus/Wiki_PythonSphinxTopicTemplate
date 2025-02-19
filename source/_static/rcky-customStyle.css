@@ -31,3 +31,9 @@
     background-color: green;
 }
 
+.light-gray-bg {
+    background-color: rgb(209, 213, 228);
+    padding: 10px;
+    border-left: 5px solid gray;
+  }
+

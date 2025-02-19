@@ -13,26 +13,33 @@
 import sys, os
 import glob
 import rst2pdf
+import datetime
 
-cwd = os.getcwd()
-project_root = os.path.dirname(cwd)
-sys.path.insert(0, project_root)
+cwd = os.getcwd() # note this will use the Makefile path
+parent_project_root = os.path.dirname(os.path.abspath(__file__)) 
+sys.path.insert(0, parent_project_root)
 sys.path.insert(0, os.path.dirname(__file__))
 
+version_file_path = os.path.join(parent_project_root, 'VERSION')
 
 # -- Project information -----------------------------------------------------
 
-project = 'KnowledgeBase Layer 1 (Parent) and Layer 2 Topic Template'
-copyright = 'Transcriber Mentality'
+project = 'Template'
+copyright = 'Richelin Metellus'
 author = 'Richelin Metellus'
+now = datetime.datetime.now()
+release_date = now.strftime("%Y-%m-%d")
+use_piccolo_theme = False
+
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 try:
-    version = open(os.path.join(project_root, 'VERSION'), 'r').read().rstrip()
-    release = version
+    with open(os.path.join(parent_project_root, 'VERSION'), 'r', encoding='utf-8') as version_file:
+        version = version_file.read().strip()
+        release = version
 except:
    version = '0.1'
    release = '0.1'
@@ -44,18 +51,22 @@ except:
 # ones.
 # myst_parser for markdown with sphinx - pip install  --upgrade myst-parser
 extensions = [
-    'sphinx.ext.autodoc',
     'myst_parser',
     'rst2pdf.pdfbuilder',
     'sphinx-prompt', 
     'sphinx_substitution_extensions',
-    'sphinxcontrib.drawio',
+    'sphinx.ext.autodoc',
     'sphinx_tabs.tabs',
     'sphinx_toolbox.collapse',
-    'sphinxcontrib.plantuml',
     'sphinx_design',
-    'sphinxcontrib.exceltable'
+    'sphinxcontrib.plantuml',
+    'sphinxcontrib.drawio',
+    # 'sphinxcontrib.kroki'
+
 ]
+
+# kroki_url = 'http://127.0.0.1:8010/'
+
 
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -100,7 +111,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'build']
 pygments_style = 'sphinx'
 
 
@@ -113,10 +124,26 @@ master_doc = 'index'
 # a list of builtin themes.
 #
 # import sphinx_rtd_theme
-html_theme = 'cloud'
+# html_theme = 'cloud'
 # Modify the cloud.css theme to match your prefer styling by
 # modifying individual css element.
-html_style = ['CloudThemeOverride.css', 'rcky-customStyle.css']
+# html_style = ['CloudThemeOverride.css', 'rcky-customStyle.css']
+if use_piccolo_theme:
+    html_theme = 'piccolo_theme'
+    html_css_files = ["PiccoloThemeOverride.css", 'rcky-customStyle.css']
+    html_theme_options = {
+        # "banner_text": "New requirement of Python 3.8 or later - see release notes for full details.",
+        # "banner_hiding": "permanent",
+        "show_theme_credit": False,
+        "globaltoc_maxdepth": 3,
+        "source_url": 'https://github.com/richMetellus/',
+    }
+else: 
+    html_theme = 'cloud'
+    # Modify the cloud.css theme to match your prefer styling by
+    # modifying individual css element.
+    # html_style = ['CloudThemeOverride.css', 'rcky-customStyle.css']
+
 html_show_sourcelink = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -152,3 +179,8 @@ pdf_stylesheets = ['sphinx', 'letter']
 pdf_documents = [ 
 
 ]
+
+rst_epilog = f"""
+.. |release_date| replace:: {release_date}
+
+"""

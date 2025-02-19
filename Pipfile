@@ -7,19 +7,28 @@ name = "pypi"
 install_search_all_sources = true
 
 [packages]
+
+# Builder/Parsers
 sphinx = ">=4.0,<6,!=5.0.0"
 myst-parser = "*"
+sphinx-autobuild = "*"
 rst2pdf = "*"
-"sphinxcontrib.drawio" = "*"
+
+# Markup Extension
 sphinx-tabs = "*"
 sphinx-toolbox = "*"
-sphinx-autobuild = "*"
 sphinx-substitution-extensions = "*"
-"sphinxcontrib.plantuml" = "*"
-cloud-sptheme = "*"
-sphinxcontrib-plantuml = "*"
-sphinx-design = "*"
-sphinx-book-theme = "*"
 sphinxcontrib-exceltable = "*"
+sphinx-design = "*"
+
+# Diagramming tool extensions
+"sphinxcontrib.drawio" = "*"
+"sphinxcontrib.plantuml" = "*"
+# sphinxcontrib-kroki = "*"
+
+# Themes
+cloud-sptheme = "*"
+sphinx-book-theme = "*"
+piccolo-theme = "*"
 
 [dev-packages]

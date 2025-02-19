@@ -83,11 +83,5 @@ div.rightside {
     background-color: #fff7e0
 } */
 
-/* My Custom Class */
-.light-gray-bg {
-    background-color: rgb(241, 240, 240);
-    padding: 10px;
-    border-left: 5px solid gray;
-  }
 
 @import url("rcky-customStyle.css");

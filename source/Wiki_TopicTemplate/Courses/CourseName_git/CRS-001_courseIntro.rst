@@ -1,4 +1,4 @@
-Course Topic Intro 
+Course Topic Intro
 ########################
 
 
