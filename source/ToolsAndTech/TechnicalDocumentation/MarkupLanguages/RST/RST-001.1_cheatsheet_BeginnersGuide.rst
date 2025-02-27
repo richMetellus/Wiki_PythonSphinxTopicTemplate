@@ -250,8 +250,8 @@ Line Blocks
 |   | vertical bar "|" and a space.            |   | vertical bar "|" and a space.            |                   
 |   | This is another line in the block. Each  |   | This is another line in the block. Each  |               
 |   | new line begins with ``|``.              |   | new line begins with ``|``               |                   
-|     Line breaks and initial indents          |     Line breaks and initial indents          |                       
-|     are preserved.                           |     are preserved.                           |                   
+|   |   Line breaks and initial indents        |   |    Line breaks and initial indents       |                       
+|   |   are preserved.                         |   |    are preserved.                        |                   
 |   | Continuation lines are wrapped           |   | Continuation lines are wrapped           |                   
 |     portions of long lines; they begin       |     portions of long lines; they begin       |                   
 |     with spaces in place of vertical bars.   |     with spaces in place of vertical bars.   |    
