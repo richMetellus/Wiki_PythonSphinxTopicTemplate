@@ -1,0 +1,332 @@
+.. _rstCheatsheetGuide:
+
+rST Cheatsheet: A Beginner Guide to reStructuredtext
+#####################################################
+
+
+Document Structure
+******************
+
+Unlike Markdown, within a restructuredtext document normally there are no heading levels 
+assigned to certain characters as the structure is determined from the succession 
+of headings. 
+
+Markdown document usually have a strict heading::
+    
+    # header 1 
+    ## header 2 
+    ### header 3
+    #### header 4
+    #### header 5 
+    ###### header 6
+
+Although any rST document parser will accept some heading like this 
+::
+
+    ==================
+    Header 1 Section
+    ==================
+
+    Header 2 subsection 
+    ====================
+
+    Header 3 
+    -----------
+
+However, with restructured text, the convention is to use the Python's Style 
+Guide for documenting
+
+``#`` with overline, for parts
+
+``*`` with overline, for chapters
+
+``=``, for sections
+
+``-``, for subsections
+
+``^``, for sub-subsections
+
+``"``, for paragraphs
+
+For my preference, I use the following convention
+
+1. For header 1 and 2 you can use underline and overline for the tile, but I prefer 
+   to use underline only.
+#. I use the following characters for the heading levels
+
+    * ``#`` for H1
+    * ``*`` for H2
+    * ``=`` for H3
+    * ``-`` for H4
+    * ``^`` for H5
+    * ``"`` for H6
+
+
+My document structure is usually as followed::
+
+    Header Level 1 for Title 
+    ########################
+
+    Sample H2 for subtitle
+    ***********************
+
+    The underline must be at least as long as the (sub-) title text.
+
+    Another H2
+    **********
+
+    Sample H3
+    =========
+
+    Sample H4
+    ---------
+
+    Sample H5
+    ^^^^^^^^^
+
+    Sample H6
+    """""""""
+
+Basic Syntax
+*************
+
+Text Formatting 
+================
+
+In rST, you can use single asterisk for *italic*,  double 
+asterisk for **bold**, and double backtics for ``inline code``
+
+- **Bold text**: ``**Bold text**``
+- *Italic*: ``*italic*``
+- ``Monospace``: ````Monospace````
+- Inline literal ``code``: ````code````
+
+Unicode 
+---------
+
+**Unicode** 
+
+Unicode characters are also supported, and interpreted as UTF-8. You can simply 
+paste it in the document as needed. Examples:
+
+* α, β, γ, δ, ε, ζ, η, θ, ι, κ, λ, μ, ν, ξ, ο, π, ρ, σ, τ, υ, φ, χ, ψ, ω.
+* PlayStation®
+* SONY™
+
+or you can also use the ``.. unicode::`` directive to include unicode characters.
+(More on directives later).
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                | **Rendered As**                             |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   You can use text substitution to insert   |You can use text substitution to insert      |
+|   specific text or syntax at a specific area|specific text or syntax at a specific area   |
+|   in the document.                          |in the document.                             |
+|                                             |                                             |
+|    SONY |TM|                                | SONY |TM|                                   |
+|                                             |                                             |
+|    PlayStation |RTM|                        | PlayStation |RTM|                           |                                   
+|                                             |                                             |
+|    .. |TM| unicode:: U+2122                 | .. |TM| unicode:: U+2122                    |
+|    .. |RTM| unicode:: U+00AE                | .. |RTM| unicode:: U+00AE                   |
+|                                             |                                             |
+|                                             |                                             |
++---------------------------------------------+---------------------------------------------+
+
+Block Literals 
+===============
+
+You can use double colon ``::`` to create a block literal. The parser will not 
+interpret the block literal text as markup.
+
++-------------------------------------------------------+-------------------------------------------------------+
+| **Raw Text**                                          | **Rendered As**                                       |   
++-------------------------------------------------------+-------------------------------------------------------+
+| ::                                                    |                                                       |
+|                                                       |                                                       |
+|   ::                                                  |::                                                     |
+|                                                       |                                                       |
+|      Block literals are what-you-see is               |   Block literals are what-you-see is                  |
+|      what-you-get. Markups are not                    |   what-you-get. Markups are not                       |
+|      rendered                                         |   rendered                                            |
+|                                                       |                                                       |                
+|      - **Bold text**: ``**Bold text**``               |   - **Bold text**: ``**Bold text**``                  |
+|      - *Italic*: ``*italic*``                         |   - *Italic*: ``*italic*``                            |                      
+|      - ``Monospace``: ````Monospace````               |   - ``Monospace``: ````Monospace````                  |
+|      - Inline literal ``code``: ````code````          |   - Inline literal ``code``: ````code````             |
+|                                                       |                                                       |
++-------------------------------------------------------+-------------------------------------------------------+
+
+Paragraphs 
+===========
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|    Paragraphs are simply texts separated by | Paragraphs are simply texts separated by    | 
+|    blank lines.                             | blank lines.                                |
+|                                             |                                             |  
+|    This is another paragraph separated by a | This is another paragraph separated by a    |     
+|    blank line from the previous one.        | blank line from the previous one.           |                         
+|    The spacing between paragraphs are       | The spacing between paragraphs are          |
+|    usually controlled by the document theme | usually controlled by the document theme    |   
+|    (.css). Extra blank lines are ignored.   | (.css). Extra blank lines are ignored.      |
+|                                             |                                             |
+|                                             |                                             |
+|    This is another paragraph separated by   | This is another paragraph separated by      |     
+|    multiple blank lines from the previous   | multiple blank lines from the previous      |
+|    one.                                     | one.                                        |
++---------------------------------------------+---------------------------------------------+
+
+You can use the ``|`` syntax to add additional breaks in between paragraphs or to simply 
+keep the text aligned.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|    Paragraphs are simply texts separated by | Paragraphs are simply texts separated by    | 
+|    blank lines.                             | blank lines.                                |
+|                                             |                                             |
+|    |                                        | |                                           |
+|                                             |                                             |  
+|    This is another paragraph separated from | This is another paragraph separated from    |     
+|    the previous one by a force break.       | the previous one by a force break.          |                         
++---------------------------------------------+---------------------------------------------+
+
+Line Blocks 
+--------------
+
++----------------------------------------------+----------------------------------------------+
+| **Raw**                                      | **Rendered as**                              |
++----------------------------------------------+----------------------------------------------+
+| ::                                           |                                              |
+|                                              |                                              |
+|   Line blocks are useful for paragraphs that |   Line blocks are useful for paragraphs that |
+|   are pre-formatted, where you want to keep  |   are pre-formatted, where you want to keep  |               
+|   the paragraph structure.  For example      |   the paragraph structure.  For example      |         
+|   poetry, ASCII art, or addresses.           |   poetry, ASCII art, or addresses.           |   
+|                                              |                                              |                       
+|   | This is a *line block*. It begins with a |   | This is a *line block*. It begins with a |            
+|   | vertical bar "|" and a space.            |   | vertical bar "|" and a space.            |                   
+|   | This is another line in the block. Each  |   | This is another line in the block. Each  |               
+|   | new line begins with ``|``.              |   | new line begins with ``|``               |                   
+|     Line breaks and initial indents          |     Line breaks and initial indents          |                       
+|     are preserved.                           |     are preserved.                           |                   
+|   | Continuation lines are wrapped           |   | Continuation lines are wrapped           |                   
+|     portions of long lines; they begin       |     portions of long lines; they begin       |                   
+|     with spaces in place of vertical bars.   |     with spaces in place of vertical bars.   |    
+|                                              |                                              |
++----------------------------------------------+----------------------------------------------+
+| ::                                           |                                              |
+|                                              |                                              |
+|    | **The Eagle**                           |   | **The Eagle**                            |                                        
+|    | By Alfred, Lord Tennyson                |   | By Alfred, Lord Tennyson                 |
+|                                              |                                              |
+|    | He clasps the crag with crooked hands;  |   | He clasps the crag with crooked hands;   | 
+|    | Close to the sun in lonely lands,       |   | Close to the sun in lonely lands,        |  
+|    | Ring'd with the azure world, he stands  |   | Ring'd with the azure world, he stands   | 
+|    | The wrinkled sea beneath him crawls;    |   | The wrinkled sea beneath him crawls;     |     
+|    | He watches from his mountain walls,     |   | He watches from his mountain walls,      |    
+|    | And like a thunderbolt he falls.        |   | And like a thunderbolt he falls.         |  
+|                                              |                                              | 
+|                                              |                                              | 
++----------------------------------------------+----------------------------------------------+
+
+
+Inserting Comments 
+===================
+
+You can add a comment in the document using the markup ``..`` syntax 
+followed by the comment text. Comments are ignored by the parser.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   .. This single line comment is ignored.   |   .. This single line comment is ignored.   |
+|   This is a text below the comment (No blank|   This is a text below the comment (No blank|
+|   line after the comment, so we might get   |   line after the comment, so we might get   |  
+|   a warning from parser).                   |   a warning from parser).                   |              
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   .. This is a multi-line comment.          |   .. This is a multi-line comment.          |
+|      it is also ignored by the parser.      |      it is also ignored by the parser.      |
+|      Whitespace and indentation matter.     |      Whitespace and indentation matter.     |
+|                                             |                                             |
+|   This is a text below the comment,         |   This is a text below the comment,         |                                                        
+|   separated by a blank line.                |   separated by a blank line.                |          
++---------------------------------------------+---------------------------------------------+
+
+**Empty comment**
+
+An empty comment starts with ``..``  surrounded by blank lines before and after the ``..`` 
+and contains no text.
+
++---------------------------------------------+---------------------------------------------+
+| **Raw Text**                                |      **Result After Parsing**               |
++---------------------------------------------+---------------------------------------------+
+| ::                                          |                                             |
+|                                             |                                             |
+|   Believe it or not, an empty comment syntax| Believe it or not, an empty comment syntax  |
+|   is added below this line.                 | is added below this line.                   |
+|                                             |                                             |
+|   ..                                        | ..                                          |                
+|                                             |                                             |
+|   Another paragraph below the empty comment | Another paragraph below the empty comment   |
+|   separated by a blank line.                | separated by a blank line.                  |
++---------------------------------------------+---------------------------------------------+
+
+Lists 
+*******
+
+Directives and Roles
+*********************
+
+**Directives** and **roles** are syntactic constructions that can add new features 
+to the reStructuredText language by interpreting a chuck of text as a specific 
+type of markup according to the name of the directive or role.
+
+Roles 
+
+* is a type of inline markup that can be applied to text in the document.
+* Syntax: ``:role-name:`interpreted text```
+
+    * the *role name* is a user-defined name and is in between the colons ``:``
+    * the *interpreted text* is the text that will be rendered according to the role 
+      and is enclosed in backticks `````.
+
+
+🎯Bonus: Tips for Writing reST Documents
+*****************************************
+
+✅ **Use consistent heading styles** throughout the document. 
+
+✅ **Indent lists and blocks properly**— whitespace is important in reST!
+
+✅ **Use cross-references** (``.. _label:``) to link between sections easily. 
+
+✅ **Use python Sphinx project + extensions** for advanced features like LaTeX math, diagrams, 
+or API documentation to generate beautiful documentation and output formats.
+
+Plantuml
+**********
+
+.. .. kroki::
+..    :caption: Diagram
+..    :type: plantuml
+
+..     @startuml
+..     Alice -> Bob: Authentication Request
+..     Bob --> Alice: Authentication Response
+
+..     Alice -> Bob: Another authentication Request
+..     Alice <-- Bob: Another authentication Response
+..     @enduml

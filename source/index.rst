@@ -100,6 +100,14 @@ as you edit your document source.
 Knowledge Bank 
 *****************
 
+**Tools and/or Technology**
+
+.. toctree::
+   :caption: Technical documentation
+   :maxdepth: 2
+
+   ToolsAndTech/TechnicalDocumentation/content
+
 .. toctree::
     :caption: Topic Template
     :glob:
@@ -113,5 +121,6 @@ Indices, glossary, and tables
 .. toctree::
     
     glossary
+    ToolsAndTech/TechnicalDocumentation/glossary.rst
 
 .. include:: includes.rst

@@ -1,5 +1,5 @@
 Topic Template Title 
-###################################
+#####################
 
 .. only:: personal
 
@@ -7,7 +7,7 @@ Topic Template Title
    *****************
 
    .. toctree::
-      :caption: Journal
+      :caption: Journal and Log Entries
       :glob:
       :numbered:
       :maxdepth: 1
@@ -18,7 +18,7 @@ Courses
 *********
 
 .. toctree::
-    :caption: Journal
+    :caption: Course/Classes
     :glob:
     :numbered:
     :maxdepth: 1
