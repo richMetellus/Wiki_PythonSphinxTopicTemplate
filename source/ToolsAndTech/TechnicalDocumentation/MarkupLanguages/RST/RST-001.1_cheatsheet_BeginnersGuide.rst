@@ -94,16 +94,46 @@ My document structure is usually as followed::
 Basic Syntax
 *************
 
+At a high level, you can think of reStructuredText as having 2 types of syntax:
+
+* inline markup
+* and block markup (explicit markup)
+
+Inline markup allows words and phrases within text to have character styles 
+(like italics and boldface) and functionality (like hyperlinks).
+
+
 Text Formatting 
 ================
 
 In rST, you can use single asterisk for *italic*,  double 
-asterisk for **bold**, and double backtics for ``inline code``
+asterisk for **bold**, and double backtics for ``inline code``. These are examples 
+of inline markup.
 
 - **Bold text**: ``**Bold text**``
 - *Italic*: ``*italic*``
 - ``Monospace``: ````Monospace````
 - Inline literal ``code``: ````code````
+
+You can escape the special characters by using a backslash ``\`` or to apply formatting
+to a single character or part of a word
+
++----------------------------------------------------+------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    **C**\ontroller **A**\rea **N**\etwork          | **C**\ontroller **A**\rea **N**\etwork         |
+|                                                    |                                                |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    *escape* ``with`` "\"                           | *escape* ``with`` "\"                          |
++----------------------------------------------------+------------------------------------------------+
+| ::                                                 |                                                |
+|                                                    |                                                |
+|    \*escape* \``with`` "\\"                        | \*escape* \``with`` "\\"                       |
++----------------------------------------------------+------------------------------------------------+
 
 Unicode 
 ---------
@@ -214,7 +244,7 @@ Line Blocks
 |   Line blocks are useful for paragraphs that |   Line blocks are useful for paragraphs that |
 |   are pre-formatted, where you want to keep  |   are pre-formatted, where you want to keep  |               
 |   the paragraph structure.  For example      |   the paragraph structure.  For example      |         
-|   poetry, ASCII art, or addresses.           |   poetry, ASCII art, or addresses.           |   
+|   poetry, or addresses.                      |   poetry, or addresses.                      |   
 |                                              |                                              |                       
 |   | This is a *line block*. It begins with a |   | This is a *line block*. It begins with a |            
 |   | vertical bar "|" and a space.            |   | vertical bar "|" and a space.            |                   
@@ -405,7 +435,7 @@ Mixing List
 You can also mix bulleted list and enumerated list.
 
 +----------------------------------------------------+----------------------------------------------------+
-| **Raw Text**                                       | **Raw Text**                                       |
+| **Raw Text**                                       | **Rendered as**                                    |
 +----------------------------------------------------+----------------------------------------------------+
 | ::                                                 |    |                                               |
 |                                                    |                                                    |                                                                                                                                          
@@ -435,15 +465,44 @@ Directives and Roles
 to the reStructuredText language by interpreting a chuck of text as a specific 
 type of markup according to the name of the directive or role.
 
-Roles 
+A **role** 
 
 * is a type of inline markup that can be applied to text in the document.
 * Syntax: ``:role-name:`interpreted text```
 
-    * the *role name* is a user-defined name and is in between the colons ``:``
-    * the *interpreted text* is the text that will be rendered according to the role 
+    * The *role name* is a either a user-defined name or a built-in predefined name 
+      used by the parser. The role name is in between the colons ``:``
+    * The *interpreted text* is the text that will be rendered according to the role 
       and is enclosed in backticks `````.
 
+Example of roles
+
+* ``:subscript:`` role 
+* ``:superscript:`` role
+* ``:math:`` role 
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|    H :subscript:`2` O                              |    H :subscript:`2` O                              |
+|                                                    |                                                    |
+|    LaT :sub:`E`\X                                  |    LaT :sub:`E`\X                                  |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   Ca :superscript:`+2`                             |   Ca :superscript:`+2`                             |
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   :math:`\sqrt{3x-1}+(1+x)^2`                      |   :math:`\sqrt{3x-1}+(1+x)^2`                      |
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
 
 🎯Bonus: Tips for Writing reST Documents
 *****************************************
@@ -455,19 +514,4 @@ Roles
 ✅ **Use cross-references** (``.. _label:``) to link between sections easily. 
 
 ✅ **Use python Sphinx project + extensions** for advanced features like LaTeX math, diagrams, 
-or API documentation to generate beautiful documentation and output formats.
-
-Plantuml
-**********
-
-.. .. kroki::
-..    :caption: Diagram
-..    :type: plantuml
-
-..     @startuml
-..     Alice -> Bob: Authentication Request
-..     Bob --> Alice: Authentication Response
-
-..     Alice -> Bob: Another authentication Request
-..     Alice <-- Bob: Another authentication Response
-..     @enduml
+or API documentation to generate beautiful documentation and different output formats.
