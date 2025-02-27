@@ -3,6 +3,10 @@
 rST Cheatsheet: A Beginner Guide to reStructuredtext
 #####################################################
 
+:Author: Richelin Metellus
+:Version: |version|
+:Date Last Updated: |today|
+:Document type: Tutorial/Guide
 
 Document Structure
 ******************
@@ -200,7 +204,7 @@ keep the text aligned.
 +---------------------------------------------+---------------------------------------------+
 
 Line Blocks 
---------------
+------------
 
 +----------------------------------------------+----------------------------------------------+
 | **Raw**                                      | **Rendered as**                              |
@@ -243,7 +247,9 @@ Inserting Comments
 ===================
 
 You can add a comment in the document using the markup ``..`` syntax 
-followed by the comment text. Comments are ignored by the parser.
+followed by the comment text. 
+
+.. note:: Comments are ignored by the parser.
 
 +---------------------------------------------+---------------------------------------------+
 | **Raw Text**                                |      **Result After Parsing**               |
@@ -286,6 +292,141 @@ and contains no text.
 
 Lists 
 *******
+
+Bulleted List 
+===============
+
+You can also create an unordered list using ``-``, ``*`` or ``+`` for 
+bullet points:
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   - hey, i'm a bullet point.                       |   - hey, i'm a bullet point.                       | 
+|   - another bullet point.                          |   - another bullet point.                          |  
+|                                                    |                                                    |
+|       - Use an empty line + indentation (3         |       - Use an empty line + indentation (3         |                                           
+|         or 4 spaces) for sub element. Whilst       |         or 4 spaces) for sub element. Whilst       |                                        
+|         editing the paragraph if it spans over     |         editing the paragraph if it spans over     |                                              
+|         2 or more lines, keep the text aligned     |         2 or more lines, keep the text aligned     |                                              
+|         and properly indented.                     |         and properly indented.                     |                             
+|       - Another sub-item. No blank line needed     |       - Another sub-item. No blank line needed     |                                              
+|         beforehand but you can add one if you      |         beforehand but you can add one if you      |                                             
+|         would like.                                |         would like.                                |                  
+|                                                    |                                                    |    
+|   - Keep an blank line in between top element      |   - Keep an blank line in between top element      |                                             
+|     and sub-elements.                              |     and sub-elements.                              |
+|                                                    |                                                    |
+|                                                    |                                                    | 
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |
+|   + a bullet point using the ``+`` syntax          |   + a bullet point using the ``+`` syntax          |
+|                                                    |                                                    |  
+|   * another bullet point using the ``*`` syntax.   |   * another bullet point using the ``*`` syntax.   |
+|     When mixing syntax, keep a blank line in       |     When mixing syntax, keep a blank line in       |
+|     between to avoid warning.                      |     between to avoid warning.                      |
+|                                                    |                                                    |
+|   - another bullet point using ``-``               |   - another bullet point using ``-``               |
+|                                                    |                                                    |
+|                                                    |                                                    |              
+|                                                    |                                                    |   
++----------------------------------------------------+----------------------------------------------------+
+
+
+Numbered/enumerated List 
+========================
+
+You can also create enumerated list using the following syntax pattern:
+
+* A number followed immediately by a period (``.``) with no space. 
+
+    * You can also use roman numerals followed by ``.``. 
+
+* You can also use capital letters or lower case letters
+
+* ``#.`` syntax can help with auto-numbering
+
+    * Usually this will start at 1, but you can also specify the number at 
+      which the list should start.
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Rendered as**                                    |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |                                                    |
+|                                                    |                                                    |    
+|   **Ordered list**                                 |   **Ordered list**                                 |                    
+|                                                    |                                                    | 
+|    1. item 1 in the list                           |    1. item 1 in the list                           |   
+|    2. item 2                                       |    2. item 2                                       |               
+|    #. use ``#.`` for auto-numbering                |    #. use ``#.`` for auto-numbering                |                                      
+|                                                    |                                                    |     
+|    You can also specify the number at which        |    You can also specify the number at which        |                                              
+|    the list should start                           |    the list should start                           |                           
+|                                                    |                                                    | 
+|    10. Item 10                                     |    10. Item 10                                     |                 
+|    #. Item 11                                      |    #. Item 11                                      |                
+|    #. so on and so forth                           |    #. so on and so forth                           |                          
+|                                                    |                                                    |      
+|    You can also have nested list                   |    You can also have nested list                   |                                    
+|                                                    |                                                    |                                  
+|    1. Item 1                                       |    1. Item 1                                       |                
+|                                                    |                                                    |      
+|        I. Item one using ``I.`` roman numerals     |        I. Item one using ``I.`` roman numerals     |                                                  
+|        #. Roman numeral item number ``II.``        |        #. Roman numeral item number ``II.``        |                                               
+|        #. So on and so forth                       |        #. So on and so forth                       |                                
+|                                                    |                                                    |
+|    #. Item 2                                       |    #. Item 2                                       |                                                                        
+|                                                    |                                                    |     
+|        A. Another sub list. First item using       |        A. Another sub list. First item using       |                                                                                                              
+|           ``A.`` as a capital letter for           |           ``A.`` as a capital letter for           |                                                                                              
+|           ordering.                                |           ordering.                                |                            
+|        #. Sub list, 2nd item (auto numbering)      |        #. Sub list, 2nd item (auto numbering)      |                                                                                                        
+|                                                    |                                                    |         
+|    #. Item 3                                       |    #. Item 3                                       |                                                                        
+|                                                    |                                                    |     
+|        a. Another sub list , using lower case      |        a. Another sub list , using lower case      |
+|           letter                                   |           letter                                   |                                                                                                                
+|        #. Item b                                   |        #. Item b                                   |                                                                            
+|                                                    |                                                    |                                                              
+|    #. Item 4                                       |    #. Item 4                                       |                                                                        
+|                                                    |                                                    |     
+|        1. using sub nested                         |        1. using sub nested                         |                                                                                      
+|        #. item 2                                   |        #. item 2                                   |                                                                            
+|                                                    |                                                    |
+|                                                    |                                                    |
++----------------------------------------------------+----------------------------------------------------+
+
+Mixing List 
+============
+
+You can also mix bulleted list and enumerated list.
+
++----------------------------------------------------+----------------------------------------------------+
+| **Raw Text**                                       | **Raw Text**                                       |
++----------------------------------------------------+----------------------------------------------------+
+| ::                                                 |    |                                               |
+|                                                    |                                                    |                                                                                                                                          
+|    1. A list as top level element                  |    1. A list as top level element                  |                                                                                                                                                                                 
+|                                                    |                                                    |                                                                                                                                                  
+|    * a bullet point                                |    * a bullet point                                |                                                                                                                                                                    
+|                                                    |                                                    |
+|        * another bullet point                      |        * another bullet point                      |                                                                                                                                                                              
+|                                                    |                                                    |                                                                                          
+|                                                    |                                                    |                                                                                                                                                   
+|    * A bullet point as top level element           |    * A bullet point as top level element           |                                                                                                                                                                                         
+|                                                    |                                                    |                                                                                      
+|        1. a list of sub element                    |        1. a list of sub element                    |                                                                                                                                                                                
+|        #. another list element                     |        #. another list element                     |                                                                                                                     
+|                                                    |                                                    |                                                        
+|           | ...                                    |          | ...                                     |                                                                                                   
+|                                                    |                                                    | 
+|        5. jump to item 5                           |        5. jump to item 5                           |                                                                                   
+|                                                    |                                                    |                                                          
+|                                                    |                                                    |                                                          
++----------------------------------------------------+----------------------------------------------------+
 
 Directives and Roles
 *********************
