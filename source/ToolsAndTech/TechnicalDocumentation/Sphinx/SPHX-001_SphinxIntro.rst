@@ -15,3 +15,11 @@ Sphinx
     * the extensible nature of reStructuredText and Docutils. (builders, parsers, 
       markup extension, etc ...)
 
+.. the following in sphinx-only directives 
+  * .. seealso 
+  * :ref: 
+  * :doc:
+  * |today|
+  * |version|
+
+

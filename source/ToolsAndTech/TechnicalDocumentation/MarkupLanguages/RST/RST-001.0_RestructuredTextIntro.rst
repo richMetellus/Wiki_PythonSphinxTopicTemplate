@@ -46,6 +46,8 @@ Get Started
    reStructuredText document or copy the ``example.rst`` file provided below in 
    this document.
     
+    .. _exampleRSTCode:
+
     .. code-block:: restructuredtext
         :caption: example.rst 
 

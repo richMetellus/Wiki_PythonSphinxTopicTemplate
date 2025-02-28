@@ -1,0 +1,87 @@
+
+@startmindmap
+<style>
+mindmapDiagram {
+    :depth(2) {
+      BackGroundColor gold
+    }
+}
+</style>
+
+*[#Orange] Document.rst
+** Structure (Section)
+***: .. Example 1
+
+<code>
+Title (H1)
+##########
+
+...
+
+Subtitle (H2) 
+*************
+
+...
+
+Section (H3)
+============
+...
+H4
+--
+...
+H5 
+^^
+...
+H6
+""
+...
+
+</code>
+;
+
+** Body or body elements
+
+*** Paragraphs
+****_ block text separated by a blank line
+****_ which can also include inline markup, or block markup for \
+special formatting
+
+*** Character Markup
+****_ Special characters understood by the parser
+****_ can be used to form compound body elements \
+(bullet list, grid table, etc...)
+****_ Examples 
+***** +, -, *, |, #, =, `, etc...
+***** underscore _, double underscore __
+
+*** Inline Markup
+****_ allows words and phrases within text to have character styles \n \
+(like italics and boldface) and functionality (like hyperlinks).
+****_ starts and ends with special characters markup
+****_ Examples
+***** *italics*
+***** **bold**
+***** `inline literal`
+*****[#lightgreen] roles 
+****** :math:
+****** :code:
+****** etc...
+
+
+*** Explicit Markup Block
+****_ starts with 2 dots ".." followed by whitespace
+****_ have indented block text as body
+****_ Examples:
+***** Comments
+*****[#lightgreen] Directives
+****** code-block
+****** admonitions
+****** list-table
+****** etc...
+***** Footnotes
+***** Citations
+***** Hyperlink Targets
+***** Substitution Definition
+
+
+@endmindmap

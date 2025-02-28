@@ -94,15 +94,6 @@ My document structure is usually as followed::
 Basic Syntax
 *************
 
-At a high level, you can think of reStructuredText as having 2 types of syntax:
-
-* inline markup
-* and block markup (explicit markup)
-
-Inline markup allows words and phrases within text to have character styles 
-(like italics and boldface) and functionality (like hyperlinks).
-
-
 Text Formatting 
 ================
 
@@ -112,11 +103,33 @@ of inline markup.
 
 - **Bold text**: ``**Bold text**``
 - *Italic*: ``*italic*``
-- ``Monospace``: ````Monospace````
 - Inline literal ``code``: ````code````
 
-You can escape the special characters by using a backslash ``\`` or to apply formatting
-to a single character or part of a word
+    - Spacing are preserved in inline literal text, but line breaks are not.
+
+    +----------------------------------------------------+----------------------------------------------------+
+    | **Raw Text**                                       | **Raw Text**                                       |
+    +----------------------------------------------------+----------------------------------------------------+
+    | ::                                                 |   |                                                |
+    |                                                    |                                                    |
+    |    ``M o n o s p a c e``                           |    ``M o n o s p a c e``                           |
+    |                                                    |                                                    |
+    +----------------------------------------------------+----------------------------------------------------+
+    | ::                                                 |  |                                                 |
+    |                                                    |                                                    |
+    |    ``M o n o                                       |    ``M o n o                                       |
+    |    s p a c e``                                     |    s p a c e``                                     |
+    |                                                    |                                                    |
+    +----------------------------------------------------+----------------------------------------------------+
+    
+
+You can escape/override the special characters given to markup characters 
+by using a backslash ``\`` 
+
+You can also apply formatting to a single character or part of a word using 
+a backslash.
+
+To get a literal backslash, use an escaped backslash ("\\"). 
 
 +----------------------------------------------------+------------------------------------------------+
 | **Raw Text**                                       | **Rendered as**                                |
@@ -272,6 +285,20 @@ Line Blocks
 |                                              |                                              | 
 +----------------------------------------------+----------------------------------------------+
 
+Block Quotes [1]_
+------------------
+
++----------------------------------------------+-----------------------------------------------+
+| **Raw**                                      | **Rendered as**                               |
++----------------------------------------------+-----------------------------------------------+
+| ::                                           |                                               |
+|                                              |                                               |
+|   Block quotes are just:                     |   Block quotes are just:                      |
+|                                              |                                               |
+|       Indented paragraphs,                   |       Indented paragraphs,                    |
+|                                              |                                               |
+|           and they may nest.                 |           and they may nest.                  |
++----------------------------------------------+-----------------------------------------------+
 
 Inserting Comments 
 ===================
@@ -366,7 +393,7 @@ bullet points:
 +----------------------------------------------------+----------------------------------------------------+
 
 
-Numbered/enumerated List 
+Numbered/Enumerated List 
 ========================
 
 You can also create enumerated list using the following syntax pattern:
@@ -504,6 +531,307 @@ Example of roles
 |                                                    |                                                    |
 +----------------------------------------------------+----------------------------------------------------+
 
+
+**Directives**
+
+- are a type of **block-level markup** that can be applied to a block of text in the document.
+    
+    - A block markup is a text block
+        
+        - whose first line begins with ``..`` followed by whitespace
+        - whose second and subsequent lines are indented relative to the first line.
+        - and which ends before an unindented line.
+    
+    - useful for constructs that need special handling
+
+    .. note:: There needs to be a blank line between explicit markup and 
+        normal paragraphs
+
+- directive Syntax:: 
+    
+    .. directive-name:: <required or optional argument>
+        :option-name1: value
+        :option-name2: value
+        :option-nameN: value
+
+        directive content/body goes here.
+        Subsequent lines stay indented
+
+- Examples of directives: ``.. note::``, ``.. warning::``, ``.. tip::``, 
+  ``.. code-block::``, etc...
+
+Tables [1]_ 
+*************
+
+Using these specials characters ``+``, ``=``, ``|``  you can create/draw table in 
+restructuredtext. There are two syntaxes for tables in reStructuredText. 
+
+1. **Grid tables**- which are complete but cumbersome to create. 
+2. **Simple tables** are easy to create but limited (no row spans, etc.).
+
+You can use directives like ``.. csv-table::`` or ``.. list-table::`` to create
+easy to managed tables.
+
+Grid Tables
+=============
+
+With grid tables, you can have nested tables and granular control on how 
+the table can be drawn.
+
+.. hint:: I have been using grid tables throughout this document.
+
++---------------------------------------------------------------+--------------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered As**                                              |
++---------------------------------------------------------------+--------------------------------------------------------------+
+| ::                                                            |                                                              |                          
+|                                                               |                                                              |                          
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|    | Raw Text                       |                         |   | Raw Text                       |                         | 
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|    | ::                             |                         |   | ::                             |                         | 
+|    |                                |                         |   |                                |                         |     
+|    |   ``M o n o s p a c e``        |                         |   |   ``M o n o s p a c e``        |                         | 
+|    |                                |                         |   |                                |                         | 
+|    |                                |                         |   |                                |                         | 
+|    +--------------------------------+                         |   +--------------------------------+                         | 
+|                                                               |                                                              |
++---------------------------------------------------------------+--------------------------------------------------------------+
+
+++ **Grid table which span rows, columns and which includes header row**
+
++---------------------------------------------------------------+------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered as**                                      |
++---------------------------------------------------------------+------------------------------------------------------+
+| ::                                                            |                                                      |
+|                                                               |                                                      |
+|                                                               |                                                      |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | Header 1   | Header 2   | Header 3  |                     |   | Header 1   | Header 2   | Header 3  |            |
+|   +============+============+===========+                     |   +============+============+===========+            |
+|   | body row 1 | column 2   | column 3  |                     |   | body row 1 | column 2   | column 3  |            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | body row 2 | Cells may span columns.|                     |   | body row 2 | Cells may span columns.|            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
+|   | body row 3 | Cells may  | - Cells   |                     |   | body row 3 | Cells may  | - Cells   |            |
+|   +------------+ span rows. | - contain |                     |   +------------+ span rows. | - contain |            |
+|   | body row 4 |            | - blocks. |                     |   | body row 4 |            | - blocks. |            |
+|   +------------+------------+-----------+                     |   +------------+------------+-----------+            |
++---------------------------------------------------------------+------------------------------------------------------+
+
+Simple Table 
+=============
+
++---------------------------------------------------------------+------------------------------------------------------+
+| **Raw Text**                                                  | **Rendered as**                                      |
++---------------------------------------------------------------+------------------------------------------------------+
+| ::                                                            |                                                      |
+|                                                               |                                                      |
+|                                                               |                                                      |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
+|      Inputs     Output                                        |      Inputs     Output                               |
+|   ------------  ------                                        |   ------------  ------                               |
+|     A      B    A or B                                        |     A      B    A or B                               |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
+|   False  False  False                                         |   False  False  False                                |
+|   True   False  True                                          |   True   False  True                                 |
+|   False  True   True                                          |   False  True   True                                 |
+|   True   True   True                                          |   True   True   True                                 |
+|   =====  =====  ======                                        |   =====  =====  ======                               |
++---------------------------------------------------------------+------------------------------------------------------+
+
+
+.. Tip::
+
+   To start a new row in a simple table without text in the first
+   column in the processed output, use one of these:
+
+   * an empty comment (``..``), which may be omitted from the processed
+     output
+
+   * a backslash escape followed by a space
+     (:literal:`\\ \ `)
+
+The following example illustrates continuation lines (row 2 consists
+of two lines of text, and four lines for row 3), a blank line
+separating paragraphs (row 3, column 2), text extending past the right
+edge of the table, and a new row which will have no text in the first
+column in the processed output (row 4)
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Rendered As                                                   |
++===============================================================+===============================================================+
+| ::                                                            |                                                               |
+|                                                               |                                                               |                                                                          
+|     =====  =====                                              |     =====  =====                                              |                            
+|     col 1  col 2                                              |     col 1  col 2                                              |                            
+|     =====  =====                                              |     =====  =====                                              |                            
+|     1      Second column of row 1.                            |     1      Second column of row 1.                            |                                              
+|     2      Second column of row 2.                            |     2      Second column of row 2.                            |                                              
+|            Second line of paragraph.                          |            Second line of paragraph.                          |                                                
+|     3      - Second column of row 3.                          |     3      - Second column of row 3.                          |                                                
+|                                                               |                                                               |            
+|            - Second item in bullet                            |            - Second item in bullet                            |                                              
+|              list (row 3, column 2).                          |              list (row 3, column 2).                          |                                                
+|     \      Row 4; column 1 will be empty.                     |     \      Row 4; column 1 will be empty.                     |                                                     
+|     =====  =====                                              |     =====  =====                                              |                            
+|                                                               |                                                               |
+|                                                               |                                                               |
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+CSV Table 
+===========
+
+.. warning:: The "csv-table" directive's *file* and *url*  options represent
+    potential security holes.  They can be disabled with the
+    ``file_insertion_enabled`` docutils runtime setting.
+
+
+**Syntax**::
+
+    .. csv-table:: Table Title
+       :file: CSV file path and name
+       :widths: 30, 70
+       :header-rows: 1
+
+.. tip:: for more information on the "csv-table" directive and the options 
+    it supports, visit `docutils csv-table documentation <https://docutils.sourceforge.io/docs/ref/rst/directives.html#csv-table-1>`_
+
+**Example**
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                   |
++===============================================================+===============================================================+
+| ::                                                            |                                                               |   
+|                                                               |                                                               |
+|     .. csv-table:: Frozen Delights!                           |     .. csv-table:: Frozen Delights!                           |                                    
+|        :header: "Treat", "Quantity", "Description"            |        :header: "Treat", "Quantity", "Description"            |                                                   
+|        :widths: 15, 10, 30                                    |        :widths: 15, 10, 30                                    |                           
+|                                                               |                                                               | 
+|        "Albatross", 2.99, "On a stick!"                       |        "Albatross", 2.99, "On a stick!"                       |                                        
+|        "Crunchy Frog", 1.49, "If we took the bones out,       |        "Crunchy Frog", 1.49, "If we took the bones out,       |                                                        
+|        it wouldn't be crunchy, now would it?"                 |        it wouldn't be crunchy, now would it?"                 |                                              
+|        "Gannet Ripple", 1.99, "On a stick!"                   |        "Gannet Ripple", 1.99, "On a stick!"                   |                                            
+|                                                               |                                                               |
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+.. note:: Within the CSV file, you can use RST markup just as you would if writing 
+    in directly in the RST file.
+
+    Make sure the parameters match the content of the CSV file.
+
+List Table Directive
+=====================
+
++--------------------------------------+--------------------------------------+
+| Raw Text                             | Rendered Text                        |
++======================================+======================================+
+| ::                                   |                                      |       
+|                                      |                                      |    
+|   .. list-table:: Title              |   .. list-table:: Title              |                            
+|      :widths: 10 15 20               |      :widths: 10 15 20               |                           
+|      :header-rows: 1                 |      :header-rows: 1                 |                         
+|                                      |                                      |
+|      * - Heading row 1, column 1     |      * - Heading row 1, column 1     |                                     
+|        - Heading row 1, column 2     |        - Heading row 1, column 2     |                                   
+|        - Heading row 1, column 3     |        - Heading row 1, column 3     |                                   
+|      * - Row 1, column 1             |      * - Row 1, column 1             | 
+|        -                             |        -                             |           
+|        - Row 1, column 3             |        - Row 1, column 3             |                           
+|      * - Row 2, column 1             |      * - Row 2, column 1             |                           
+|        - Row 2, column 2             |        - Row 2, column 2             |     
+|        - Row 2, column 3             |        - Row 2, column 3             |                           
+|                                      |                                      |          
+|                                      |                                      |     
++--------------------------------------+--------------------------------------+
+
+Code (Syntax Highlighting)
+***************************
+
+Hyperlinks, Cross-Referencing (Document Linkage) 
+*************************************************
+
+External Hyperlinks
+====================
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   External hyperlinks, like Python_.                          |   External hyperlinks, like Python_.                        |
+|                                                               |                                                             |
+|   .. _Python: http://www.python.org/                          |   .. _Python: http://www.python.org/                        |
++---------------------------------------------------------------+-------------------------------------------------------------+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   External hyperlinks, like `Python                           |   External hyperlinks, like `Python                         |
+|   <http://www.python.org/>`_.                                 |   <http://www.python.org/>`_.                               |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Indirect Hyperlinks and Anonymous Hyperlinks
+=============================================
+
+The second hyperlink target (the line beginning with "__") is both an indirect hyperlink target 
+(indirectly pointing at the Python website via the ``Python_`` reference) and an anonymous 
+hyperlink target. In the text, a double-underscore suffix is used to indicate an anonymous 
+hyperlink reference. In an anonymous hyperlink target, the reference text is not repeated. 
+This is useful for references with long text or throw-away references, 
+but the target should be kept close to the reference to prevent 
+them going out of sync.
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Python_ is `my favourite                                    |   Python_ is `my favourite                                  |
+|   programming language`__.                                    |   programming language`__.                                  |
+|                                                               |                                                             |
+|   .. _Python: http://www.python.org/                          |   .. _Python: http://www.python.org/                        |
+|                                                               |                                                             |
+|   __ Python_                                                  |   __ Python_                                                |
+|                                                               |                                                             |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Internal Hyperlinks (Cross-References)
+======================================
+
++---------------------------------------------------------------+-------------------------------------------------------------+
+| Raw Text                                                      | Rendered as                                                 |
++===============================================================+=============================================================+
+| ::                                                            |                                                             |
+|                                                               |                                                             |
+|   Internal cross-references, like example_.                   |   Internal cross-references, like example_.                 |
+|                                                               |                                                             |
+|   .. _example:                                                |   .. _example:                                              |
+|                                                               |                                                             |
+|   This is an example cross-reference target.                  |   This is an example cross-reference target.                |
++---------------------------------------------------------------+-------------------------------------------------------------+
+
+Implicit Hyperlinks Targets
+============================
+
+You can also reference a section or subsection by using the section title as the reference.
+
++---------------------------------------------------------------+---------------------------------------------------------------+
+| Raw Text                                                      | Raw Text                                                      | 
++===============================================================+===============================================================+
+| ::                                                            |                                                               |            
+|                                                               |                                                               |
+|     Implicit reference that allows you to jump to             |     Implicit reference that allows you to jump to             |                                                            
+|     `Internal Hyperlinks (Cross-References)`_                 |     `Internal Hyperlinks (Cross-References)`_                 |                                                       
+|                                                               |                                                               |          
+|                                                               |                                                               |          
++---------------------------------------------------------------+---------------------------------------------------------------+
+
+.. note:: Reference/target label must be unique within the document. To reference to label 
+    that lives in another document, you will have use the sphinx project 
+    built-in ``:ref:`` role. Docutils rst does not support this.
+
+Citations, Footnotes, and Bibliography 
+***************************************
+
+
 🎯Bonus: Tips for Writing reST Documents
 *****************************************
 
@@ -514,4 +842,49 @@ Example of roles
 ✅ **Use cross-references** (``.. _label:``) to link between sections easily. 
 
 ✅ **Use python Sphinx project + extensions** for advanced features like LaTeX math, diagrams, 
-or API documentation to generate beautiful documentation and different output formats.
+or API documentation to generate beautiful documentation and produce different output formats.
+
+Conclusion
+**********
+
+At a high level, you can think of reStructuredText as having 3 types of syntax:
+
+* Character markup 
+    
+    -  ``+``, ``*``, ``|``,``=``,  ``#`` ``.`` as in bullet points, lists, 
+       and tables, sections title
+
+    - Whitespaces (Blank line, Indentation, page break, etc...)
+
+* Inline markup
+
+    - Inline markup allows words and phrases within text to have character styles 
+      like italics and boldface) and functionality (like hyperlinks).
+      See more by checking out `Text Formatting`_ section.
+
+* and block markup (explicit markup)
+
+    - A block markup is a text block
+        
+        - whose first line begins with ``..`` followed by whitespace
+        - whose second and subsequent lines are indented relative to the first line.
+        - and which ends before an unindented line.
+    
+    - useful for constructs that need special handling
+
+    .. note:: There needs to be a blank line between explicit markup and 
+        normal paragraphs
+    
+    * Examples of block markup are comments, directives, and 
+      footnotes, etc...
+
+In conclusion, using only special markup characters and text, one can create a reStructuredText document 
+which is made up of body or block-level elements which may be structured into 
+sections and subsections  
+
+References/Additional Resources
+********************************
+
+.. [1] `reStructuredText Markup Specification`_
+
+.. _reStructuredText Markup Specification: https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html

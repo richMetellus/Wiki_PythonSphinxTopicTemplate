@@ -29,7 +29,7 @@ copyright = 'Richelin Metellus'
 author = 'Richelin Metellus'
 now = datetime.datetime.now()
 release_date = now.strftime("%Y-%m-%d")
-use_piccolo_theme = False
+use_piccolo_theme = True
 
 
 # The version info for the project you're documenting, acts as replacement for
