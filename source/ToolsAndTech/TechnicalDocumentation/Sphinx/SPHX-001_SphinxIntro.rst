@@ -21,5 +21,7 @@ Sphinx
   * :doc:
   * |today|
   * |version|
+  * code-block::, rst is code::
+
 
 

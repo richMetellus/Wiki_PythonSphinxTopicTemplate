@@ -1,5 +1,5 @@
-Course Topic Intro
-########################
+Course Topic Intro (Ex: Limits)
+################################
 
 
 **Objectives**
@@ -8,7 +8,7 @@ Course Topic Intro
 #. Learn that 
 
 History on Topic 
-**********************
+******************
 
 blah blah 
 

@@ -1,5 +1,5 @@
-Topic Template Title 
-#####################
+Parent Topic Name As Title (Ex: Mathematics)
+#############################################
 
 .. only:: personal
 

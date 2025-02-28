@@ -66,6 +66,7 @@ This project require a few dependencies.
 #. python
 #. pip
 #. pipenv
+#. GNU make
 
 Although some dependencies (python packages) are being kept tracked of via Pipefiles and can be 
 automatically installed, others require some executable to be on the user's build
@@ -81,8 +82,13 @@ machine.
     *  `plantuml.jar` that requires `java -jar` command so you'll need the java
        `jre <https://www.java.com/en/download/>`_ on your system
 
-        *  The sphinx-needs has some instruction on how to install plantuml to work with sphinx
-           `plantuml <https://sphinx-needs.readthedocs.io/en/latest/installation.html>`_
+        * The sphinx-needs extension documentation has some instructions on how 
+          to install plantuml to work with sphinx
+          `plantuml <https://sphinx-needs.readthedocs.io/en/latest/installation.html>`_
+        
+        .. important:: This project already have the plantuml.jar file in a 
+            folder ``tools`` in the root directory of the project. You only need 
+            to worry about installing java runtime environment (JRE) on your system.
 
   
 
@@ -103,13 +109,13 @@ Knowledge Bank
 **Tools and/or Technology**
 
 .. toctree::
-   :caption: Technical documentation
-   :maxdepth: 2
+   :maxdepth: 1
 
    ToolsAndTech/TechnicalDocumentation/content
 
+**My Template for documenting a topic**
+
 .. toctree::
-    :caption: Topic Template
     :glob:
     :maxdepth: 1
 

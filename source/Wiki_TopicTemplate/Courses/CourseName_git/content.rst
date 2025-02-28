@@ -1,8 +1,10 @@
-Course Title 
-##############
+Course Title (Ex: Calculus I) 
+#############################
 
-Course Description 
-********************
+
+
+Course Description (Ex: Syllabus)
+**********************************
 
 Course Content 
 *****************

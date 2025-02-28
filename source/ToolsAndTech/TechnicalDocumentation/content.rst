@@ -1,12 +1,12 @@
-Technical Documentation Tools & Technology
-#############################################
+Technical Documentation 
+#########################
 
 Markup Languages
 *****************
 
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 3
 
    MarkupLanguages/content
 

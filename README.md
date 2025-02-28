@@ -9,6 +9,7 @@ You only need to install `python` and install `pipenv` as the initial requiremen
 
 1. Install python and `pip`
 2. Then use `pip` to install `pipenv`
+3. Additionally, install GNU make on your host machine
 
 Once these two are install. To build the document you need to run the following commands
 
