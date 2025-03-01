@@ -942,7 +942,12 @@ At a high level, you can think of reStructuredText as having 3 types of syntax:
 
 In conclusion, using only special markup characters and text, one can create a reStructuredText document 
 which is made up of body or block-level elements which may be structured into 
-sections and subsections  
+sections and subsections.
+
+.. uml:: ../../_images/src/rstMindmap.puml
+   :width: 1080px
+   :scale: 60%
+   :alt: This document structure plantuml diagram
 
 References/Additional Resources
 ********************************

@@ -53,7 +53,7 @@ a high level of understanding if you train your mind to recreate the same exact
 step someone took to arrive a difficult solution?
 
 * For example, you see how I create linkage of information, see connection 
-  between different topics/ subject
+  between different topics/ subjects
 
     * How they can complement each other
     * And how they can help create a mental picture of an overall system
@@ -113,7 +113,7 @@ in the void, the knowledge missing in your mind, the more you can accomplish.
 
 .. _doc-structure:
 
-The structure of this document
+The Structure of This Document
 ================================
 
 ++ Part of this document 
@@ -145,7 +145,7 @@ The structure of this document
         * [**Chunking**] is a technique that involves breaking down information 
           into smaller, more manageable pieces.
 
-        * ex: 8005557465 -> 800-555-7465; 2nd format is easier to remember.
+        * ex: 8005555674 -> 800-555-5674; 2nd format is easier to remember.
         * Facilitate comprehension and information retrieval
     
     * and/or **mnemonic devices** when possible.
@@ -157,14 +157,18 @@ The structure of this document
     still confident enough to get a good grade. 
 
 *The hierarchical structure of this document serves as 
-memory helper, a sequence of information that might trigger part of my memory 
-to help me understand how I came up with certain implementation.*
+memory helper, or as a method to group a sequence of information that might trigger part of my memory 
+to help me understand how I came up with a certain solution, or as an aid to form 
+a mental picture.*
+
+    ''A picture is worth a thousand words.''
+
 For example, visually while I read :ref:`the paragraph above that explains the document 
 structure <doc-structure>`, my brain might visualize the information flow as such:
 
 .. uml:: common/_images/src/doc.puml
    :width: 100%
-   :alt: This document
+   :alt: This document structure plantuml diagram
 
 .. important:: Please use theme that provide navigation tab(s).
 
