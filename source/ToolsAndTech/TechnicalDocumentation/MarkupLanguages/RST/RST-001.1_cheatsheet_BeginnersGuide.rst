@@ -1,5 +1,7 @@
 .. _rstCheatsheetGuide:
 
+.. include:: /markupExtension.rst
+
 rST Cheatsheet: A Comprehensive Guide to reStructuredtext
 ##########################################################
 
@@ -492,9 +494,13 @@ Directives and Roles
 to the reStructuredText language by interpreting a chuck of text as a specific 
 type of markup according to the name of the directive or role.
 
+Role 
+======
+
 A **role** 
 
 * is a type of inline markup that can be applied to text in the document.
+* is an inline piece of explicit markup
 * Syntax: ``:role-name:`interpreted text```
 
     * The *role name* is a either a user-defined name or a built-in predefined name 
@@ -502,7 +508,7 @@ A **role**
     * The *interpreted text* is the text that will be rendered according to the role 
       and is enclosed in backticks `````.
 
-Example of roles
+Example of docutils predefined roles
 
 * ``:subscript:`` role 
 * ``:superscript:`` role
@@ -531,6 +537,35 @@ Example of roles
 |                                                    |                                                    |
 +----------------------------------------------------+----------------------------------------------------+
 
+Example of defining a custom role in a file call markupExtension.rst which is imported 
+in this doc using the ``.. include::`` directive and custom css class.
+
+::
+
+    .. role:: red-text
+       :class: rcky-font-color-red
+
+    .. role:: greenyellow-highlighted-text
+       :class: rcky-greenyellow-highlight
+
+**Usage**
+
++------------------------------------------------------+------------------------------------------------------+
+| Raw Text                                             | Rendered as                                          |
++======================================================+======================================================+
+| ::                                                   |                                                      |
+|                                                      |                                                      |
+|   :red-text:`This text will be red`                  |   :red-text:`This text will be red`                  | 
+|                                                      |                                                      | 
++------------------------------------------------------+------------------------------------------------------+
+| ::                                                   |                                                      |
+|                                                      |                                                      |
+|   :greenyellow-highlighted-text:`GreenYellow shade`  |   :greenyellow-highlighted-text:`GreenYellow shade`  |
+|                                                      |                                                      |
++------------------------------------------------------+------------------------------------------------------+
+
+Directives 
+===========
 
 **Directives**
 

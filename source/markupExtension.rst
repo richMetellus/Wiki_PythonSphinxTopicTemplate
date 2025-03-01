@@ -1,4 +1,3 @@
-.. _markupExtenstionStart:
 
 .. role:: strike
    :class: strike
@@ -41,4 +40,3 @@
 .. role:: greenyellow-highlighted-text
    :class: rcky-greenyellow-highlight
    
-.. _markupExtenstionEnd:
