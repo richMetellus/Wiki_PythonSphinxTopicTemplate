@@ -15,6 +15,16 @@ Sphinx
     * the extensible nature of reStructuredText and Docutils. (builders, parsers, 
       markup extension, etc ...)
 
+To Get Started 
+****************
+
+You have already started by reading this project or if you managed to have it 
+built successfully, then you are already on your way to creating your own. 
+
+.. seealso:: `The official Sphinx documentation <https://www.sphinx-doc.org/en/master/usage/index.html>`_
+    already includes many guides and comprehensive notes on how to use Sphinx and 
+    customizing it to your needs.
+
 .. the following in sphinx-only directives 
   * .. seealso 
   * :ref: 

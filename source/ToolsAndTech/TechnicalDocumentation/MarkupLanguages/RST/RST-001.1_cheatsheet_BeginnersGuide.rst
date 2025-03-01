@@ -781,6 +781,8 @@ for multiple programming languages.
       ``emphasize-lines`` for highlighting lines, ``lineno-start`` to specify the 
       starting line number for the code being displayed.
 
+.. note:: By default, code blocks will use python syntax highlighting.
+
 +----------------------------------------------------+----------------------------------------------------+
 | Raw Text                                           | Rendered as                                        |
 +====================================================+====================================================+

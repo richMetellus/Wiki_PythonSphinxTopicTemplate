@@ -1,12 +1,27 @@
 Sphinx and RestructuredText Cheatsheet
 #######################################
 
+**Scope and Purpose**
+
+This document is where I will keep track of the various reStructuredText (rST)
+directives and syntax that I commonly use in my Sphinx documentation projects.
+This is not meant to be a comprehensive guide to reStructuredText, or Sphinx.
+
 .. note:: A comprehensive guide was written for RestructuredText (rST, reST)
     
-    .. seealso:: :ref:`RestructuredText Cheatsheet <rstCheatsheetGuide>`
+    .. seealso:: :ref:`RestructuredText Cheatsheet created in this project 
+        <rstCheatsheetGuide>`
+    
+    .. seealso:: `Sphinx documentation <https://www.sphinx-doc.org/en/master/usage/index.html>`_
+
+Sphinx Only Directives & Roles 
+********************************
+
+The directives below are only available in Sphinx and not in the classic
+reStructuredText (rST)/docutils.
 
 Code Block & Syntax Highlighting
-**********************************
+==================================
 
 The ``code-block`` directive is used to display block of code 
 in your documentation just like the docutils rST ``code`` directive, but 
@@ -28,6 +43,8 @@ for multiple programming languages.
   ``emphasize-lines`` for highlighting lines, ``lineno-start`` to specify the 
   starting line number for the code being displayed.
 
+.. note:: By default, code blocks will use python syntax highlighting.
+    
 +----------------------------------------------------+----------------------------------------------------+
 | Raw Text                                           | Rendered as                                        |
 +====================================================+====================================================+
@@ -69,7 +86,7 @@ for multiple programming languages.
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 | Raw Text                                                                     | Rendered as                                                                  |
 +==============================================================================+==============================================================================+
-| ::                                                                           | ::                                                                           |
+| ::                                                                           |                                                                              |
 |                                                                              |                                                                              |
 |    .. code-block:: python                                                    |    .. code-block:: python                                                    |                                  
 |        :emphasize-lines: 6-7, 17                                             |        :emphasize-lines: 6-7, 17                                             |                                        
@@ -102,3 +119,58 @@ for multiple programming languages.
 |                                                                              |                                                                              |  
 +------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
+``:ref:`` Role
+===============
+
+The ``:ref:`` inline markup
+
+* is a role that is commonly use in Sphinx to create cross-references 
+  to arbitrary locations in any document in the project.
+
+* is very useful for documents, multi page linkage.
+
+To create one the standard reStructuredText target labels are used.
+
+* syntax to create a target label::
+
+    .. _target-label:
+
+* syntax to reference one::
+
+    :ref:`label alt text <target-label>`
+
+    Or 
+
+    :ref:`target-label`
+
++--------------------------------------------------------------+--------------------------------------------------------------+
+| Raw Text                                                     | Rendered as                                                  |
++==============================================================+==============================================================+
+| ::                                                           |                                                              |
+|                                                              |                                                              |
+|                                                              |                                                              |      
+|    .. _example-section:                                      |    .. _example-section:                                      |                              
+|                                                              |                                                              |      
+|    Use https://www.lipsum.com/ to generate random text.      |    Use https://www.lipsum.com/ to generate random text.      |                                                              
+|                                                              |                                                              |      
+|    Lorem ipsum dolor sit amet, consectetur adipiscing elit.  |    Lorem ipsum dolor sit amet, consectetur adipiscing elit.  |                                                                   
+|    Mauris aliquam orci et nibh ultricies, nec venenatis nisl |    Mauris aliquam orci et nibh ultricies, nec venenatis nisl |                                                                    
+|    ullamcorper. Fusce dignissim dui sed augue ultrices, eget |    ullamcorper. Fusce dignissim dui sed augue ultrices, eget |                                                                    
+|    posuere lectus vulputate. Praesent quis sagittis turpis.  |    posuere lectus vulputate. Praesent quis sagittis turpis.  |                                                                   
+|    Morbi vestibulum dictum libero, ut bibendum ex. Phasellus |    Morbi vestibulum dictum libero, ut bibendum ex. Phasellus |                                                                    
+|    aliquam facilisis neque, ut ultricies risus ultricies id. |    aliquam facilisis neque, ut ultricies risus ultricies id. |                                                                    
+|    Sed vel venenatis dui. Nullam efficitur sem eget nunc     |    Sed vel venenatis dui. Nullam efficitur sem eget nunc     |                                                                
+|    rhoncus, id posuere elit pretium. Cras sodales sagittis   |    rhoncus, id posuere elit pretium. Cras sodales sagittis   |                                                                   
+|    est eu pellentesque. Cras consectetur lacus est,          |    est eu pellentesque. Cras consectetur lacus est,          |                                                            
+|    placerat ante fermentum in. Sed euismod, elit id          |    placerat ante fermentum in. Sed euismod, elit id          |                                                           
+|    accumsansodales dignissim, dolor eros iaculis diam, et    |    accumsansodales dignissim, dolor eros iaculis diam, et    |                                                                 
+|    accumsan magna mi molestie metus. Donec a                 |    accumsan magna mi molestie metus. Donec a                 |                                                    
+|    turpis consequat, auctor ex scelerisque.                  |    turpis consequat, auctor ex scelerisque.                  |                                                  
+|                                                              |                                                              |
+|    Refer to the :ref:`Example Section <example-section>`     |    Refer to the :ref:`Example Section <example-section>`     |                                                                
+|    for more details.                                         |    for more details.                                         |                           
+|                                                              |                                                              |      
++--------------------------------------------------------------+--------------------------------------------------------------+
+
+``:doc:`` Role
+===============
