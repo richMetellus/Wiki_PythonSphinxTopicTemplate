@@ -37,7 +37,7 @@ livehtml:
 	sphinx-autobuild --port 8002 "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 booktheme-livedoc:
-	sphinx-autobuild --port 8002 -D html_theme='sphinx_book_theme' "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	sphinx-autobuild --port 8001 -D html_theme='sphinx_book_theme' "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 livehtml-personal:
 	sphinx-autobuild --port 8003 -t personal -D exclude_patterns='_build,build' "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
@@ -59,7 +59,3 @@ publish-clean: Makefile
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(SHRPTBUILDDIR)" $(SPHINXOPTS) $(O)
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(SHRPTBUILDDIR2)" $(SPHINXOPTS) $(O)
 	@$(SPHINXBUILD) -M clean "$(SOURCEDIR)" "$(SHRPTBUILDDIR3)" $(SPHINXOPTS) $(O)
-
-slides:
-	$(SPHINXBUILD) -b slides "$(SOURCEDIR)" $(ALLSPHINXOPTS) $(SLIDE_DIR)
-	@echo "Build finished. The HTML slides are in $(SLIDE_DIR)"

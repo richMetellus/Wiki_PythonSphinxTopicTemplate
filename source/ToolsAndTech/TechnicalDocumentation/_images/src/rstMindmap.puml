@@ -40,11 +40,13 @@ H6
 ;
 
 ** Body or body elements
-
-*** Paragraphs
+***[#lightyellow] Paragraphs
 ****_ block text separated by a blank line
-****_ which can also include inline markup, or block markup for \
-special formatting
+****_ which can **ONLY** include text and inline markup/element for special formating. \n \
+Block-level elements/nodes are not considered children of <paragraph> node \n \
+in Docutils Document Tree (DTD)
+****[#lightyellow] text
+**** plus inline-elements
 
 *** Character Markup
 ****_ Special characters understood by the parser
